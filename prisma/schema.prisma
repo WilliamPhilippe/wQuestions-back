@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "../prisma/generated/type-graphql"
+}
+
+enum TopicType {
+  MATEMATICA
+  CIENCIAS
+  PORTUGUES
+  HISTORIA
+  GEOGRAFIA
+  ARTES
+}
+
+enum SubTopicsType {
+
+  //Matemática
+
+  NUMEROS_DECIMAIS
+  SOMA
+  SUBTRACAO
+  MULTIPLICACAO
+  DIVISAO
+
+  PORCENTAGEM
+
+  FRACOES
+  OPERACOES_COM_FRACOES
+
+  ALGEBRA
+  RAZOES
+  PROPORCOES
+
+  GEOMETRIA
+  FORMAS
+  AREAS
+  ANGULOS
+  TRIANGULOS
+  CONGRUENCIA
+  PROPORCIONALIDADE
+  LOCALIZACAO
+
+  GRANDEZAS_E_MEDIDAS
+  CONVERSAO
+  MASSA_VOLUME
+  COMPRIMENTO
+  TEMPO
+  PERIMETRO
+
+  PROBABILIDADE
+  ESTATISTICA
+  GRAFICOS
+  EVENTOS_ALEATORIOS
+  PESQUISAS
+}
+
+model Question {
+  id          Int             @id @default(autoincrement())
+  // HTML like
+  description String
+  // If empty, it's an empty area response
+  options     String[]
+  image       String?
+  topic       TopicType
+  subTopics   SubTopicsType[]
+  level       Int
+  answer      String
+}
