@@ -72,6 +72,7 @@ model Question {
   description String
   // If empty, it's an empty area response
   options     String[]
+  multiple    Boolean         @default(false)
   image       String?
   topic       TopicType
   subTopics   SubTopicsType[]
