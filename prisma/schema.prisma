@@ -78,4 +78,15 @@ model Question {
   subTopics   SubTopicsType[]
   level       Int
   answer      String
+
+  @@index([level, subTopics])
+}
+
+model Test {
+  id        Int      @id @default(autoincrement())
+  userKey   String
+  data      Json
+  createdAt DateTime @default(now())
+
+  @@index([userKey, id])
 }
