@@ -5,6 +5,7 @@ import { buildSchema } from "type-graphql";
 
 import { resolvers } from "./prisma/generated/type-graphql";
 import { Context } from "./resolvers/utils/context";
+import { CustomCreateTestResolver } from "./resolvers/test/customCreateTest";
 
 const main = async () => {
   const prisma = new PrismaClient();
@@ -15,7 +16,7 @@ const main = async () => {
   };
 
   const schema = await buildSchema({
-    resolvers: [...resolvers],
+    resolvers: [...resolvers, CustomCreateTestResolver],
     validate: false,
   });
 
