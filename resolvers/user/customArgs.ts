@@ -1,5 +1,7 @@
 import { ArgsType, Field, InputType, Int, ObjectType } from "type-graphql";
 
+
+
 @InputType({
   isAbstract: true,
 })
