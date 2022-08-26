@@ -41,6 +41,7 @@ class FieldsLogin {
     nullable: false,
   })
   password!: string;
+
 }
 
 @ArgsType()
